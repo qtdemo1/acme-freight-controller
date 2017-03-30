@@ -1,16 +1,16 @@
 # Logistics Wizard Controller
 
-| **master** | [![Build Status](https://travis-ci.org/IBM-Bluemix/logistics-wizard-controller.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/logistics-wizard-controller) [![Coverage Status](https://coveralls.io/repos/github/IBM-Bluemix/logistics-wizard-controller/badge.svg?branch=master)](https://coveralls.io/github/IBM-Bluemix/logistics-wizard-controller?branch=master) |
+| **master** | [![Build Status](https://travis-ci.org/strongloop/acme-freight-controller.svg?branch=master)](https://travis-ci.org/strongloop/acme-freight-controller) [![Coverage Status](https://coveralls.io/repos/github/strongloop/acme-freight-controller/badge.svg?branch=master)](https://coveralls.io/github/strongloop/acme-freight-controller?branch=master) |
 | ----- | ----- |
-| **dev** | [![Build Status](https://travis-ci.org/IBM-Bluemix/logistics-wizard-controller.svg?branch=dev)](https://travis-ci.org/IBM-Bluemix/logistics-wizard-controller) [![Coverage Status](https://coveralls.io/repos/github/IBM-Bluemix/logistics-wizard-controller/badge.svg?branch=dev)](https://coveralls.io/github/IBM-Bluemix/logistics-wizard-controller?branch=dev)|
+| **dev** | [![Build Status](https://travis-ci.org/strongloop/acme-freight-controller.svg?branch=dev)](https://travis-ci.org/strongloop/acme-freight-controller) [![Coverage Status](https://coveralls.io/repos/github/strongloop/acme-freight-controller/badge.svg?branch=dev)](https://coveralls.io/github/strongloop/acme-freight-controller?branch=dev)|
 
-This service is part of the larger [Logistics Wizard](https://github.com/IBM-Bluemix/logistics-wizard) project.
+This service is part of the larger [Logistics Wizard](https://github.com/strongloop/acme-freight) project.
 
 ## Overview
 
 This service acts as the main controller for interaction between the system's services.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/logistics-wizard-controller.git)
+[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/strongloop/acme-freight-controller.git)
 
 ![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/d4f7f6455442b0d2e1325dde70ab15ab/badge.svg)
 
@@ -20,12 +20,12 @@ This service acts as the main controller for interaction between the system's se
 
 1. Download and install the [Cloud Foundry CLI][cloud_foundry_url] tool
 
-1. The app depends on the [ERP](https://github.com/IBM-Bluemix/logistics-wizard-erp) and [Recommendation](https://github.com/IBM-Bluemix/logistics-wizard-recommendation) microservices. Make sure to deploy them first.
+1. The app depends on the [ERP](https://github.com/strongloop/acme-freight-erp) and [Recommendation](https://github.com/strongloop/acme-freight-recommendation) microservices. Make sure to deploy them first.
 
 1. Clone the app to your local environment from your terminal using the following command:
 
 	```bash
-	git clone https://github.com/IBM-Bluemix/logistics-wizard-controller.git
+	git clone https://github.com/strongloop/acme-freight-controller.git
 	```
 
 1. `cd` into this newly created directory
@@ -74,7 +74,7 @@ And voila! You now have your very own instance of Logistics Wizard running on Bl
 2. Clone the app to your local environment from your terminal using the following command:
 
   ```bash
-  git clone https://github.com/IBM-Bluemix/logistics-wizard-controller.git
+  git clone https://github.com/strongloop/acme-freight-controller.git
   ```
 
 3. `cd` into this newly created directory
@@ -165,13 +165,13 @@ To determine how to run coveralls using another CI tool or for more in-depth ins
 ## API documentation
 The API methods that this component exposes requires the discovery of dependent services, however, the API will gracefully fail when they are not available.
 
-The API and data models are defined in [this Swagger 2.0 file](swagger.yaml). You can view this file in the [Swagger Editor](http://editor.swagger.io/#/?import=https://raw.githubusercontent.com/IBM-Bluemix/logistics-wizard-controller/master/swagger.yaml).
+The API and data models are defined in [this Swagger 2.0 file](swagger.yaml). You can view this file in the [Swagger Editor](http://editor.swagger.io/#/?import=https://raw.githubusercontent.com/strongloop/acme-freight-controller/master/swagger.yaml).
 
 Use the Postman collection to help you get started with the controller API:  
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b39a8c0ce27371fbd972#?env%5BLW_Prod%5D=W3sia2V5IjoiZXJwX2hvc3QiLCJ2YWx1ZSI6Imh0dHA6Ly9sb2dpc3RpY3Mtd2l6YXJkLWVycC5teWJsdWVtaXgubmV0LyIsInR5cGUiOiJ0ZXh0IiwiZW5hYmxlZCI6dHJ1ZSwiaG92ZXJlZCI6ZmFsc2V9LHsia2V5IjoiY29udHJvbGxlcl9ob3N0IiwidmFsdWUiOiJodHRwczovL2xvZ2lzdGljcy13aXphcmQubXlibHVlbWl4Lm5ldCIsInR5cGUiOiJ0ZXh0IiwiZW5hYmxlZCI6dHJ1ZSwiaG92ZXJlZCI6ZmFsc2V9XQ==)
 
 ## Contribute
-Please check out our [Contributing Guidelines](https://github.com/IBM-Bluemix/logistics-wizard/blob/master/.github/CONTRIBUTING.md) for detailed information on how you can lend a hand to the Logistics Wizard demo implementation effort.
+Please check out our [Contributing Guidelines](https://github.com/strongloop/acme-freight/blob/master/.github/CONTRIBUTING.md) for detailed information on how you can lend a hand to the Logistics Wizard demo implementation effort.
 
 ## Troubleshooting
 
@@ -206,9 +206,9 @@ Deployment tracking can be disabled by removing `cf_deployment_tracker.track()` 
 See [License.txt](License.txt) for license information.
 
 <!--Links-->
-[erp_github_url]: https://github.com/IBM-Bluemix/logistics-wizard-erp
-[recommendation_github_url]: https://github.com/IBM-Bluemix/logistics-wizard-recommendation
-[toolchain_github_url]: https://github.com/IBM-Bluemix/logistics-wizard-toolchain
+[erp_github_url]: https://github.com/strongloop/acme-freight-erp
+[recommendation_github_url]: https://github.com/strongloop/acme-freight-recommendation
+[toolchain_github_url]: https://github.com/strongloop/acme-freight-toolchain
 [bluemix_signup_url]: http://ibm.biz/logistics-wizard-signup
 [cloud_foundry_url]: https://github.com/cloudfoundry/cli
 [download_python_url]: https://www.python.org/downloads/

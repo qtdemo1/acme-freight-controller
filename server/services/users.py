@@ -7,6 +7,7 @@ object and should just call into the service layer to act upon a user resource.
 import json
 import requests
 from server.utils import get_service_url
+from server.utils import get_apic_credentials
 from server.exceptions import ResourceDoesNotExistException, APIException
 
 
@@ -52,6 +53,8 @@ def create_user(guid, retailer_id):
         'content-type': "application/json",
         'cache-control': "no-cache"
     }
+    headers.update(get_apic_credentials())
+
     payload = dict()
     payload['retailerId'] = int(retailer_id)
     payload_json = json.dumps(payload)
@@ -84,6 +87,7 @@ def login(guid, user_id):
         'content-type': "application/json",
         'cache-control': "no-cache"
     }
+    headers.update(get_apic_credentials())
     payload = dict()
     payload['userId'] = int(user_id)
     payload_json = json.dumps(payload)
@@ -119,6 +123,7 @@ def logout(token):
         'content-type': "application/json",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("POST", url, headers=headers)

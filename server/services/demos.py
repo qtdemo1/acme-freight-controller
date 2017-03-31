@@ -7,6 +7,7 @@ object and should just call into the service layer to act upon a demo resource.
 import requests
 import json
 from server.utils import get_service_url
+from server.utils import get_apic_credentials
 from server.exceptions import (ResourceDoesNotExistException)
 from server.exceptions import (APIException,
                                UnprocessableEntityException)
@@ -49,6 +50,8 @@ def create_demo():
         'cache-control': "no-cache"
     }
 
+    headers.update(get_apic_credentials())
+
     try:
         response = requests.request("POST", url, headers=headers)
     except Exception as e:
@@ -69,6 +72,7 @@ def get_demo_by_guid(guid):
     # Create and format request to ERP
     url = '%s/api/v1/Demos/findByGuid/%s' % (get_service_url('lw-erp'), guid)
     headers = {'cache-control': "no-cache"}
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)
@@ -92,9 +96,10 @@ def delete_demo_by_guid(guid):
 
     # Create and format request to ERP
     url = '%s/api/v1/Demos/%s' % (get_service_url('lw-erp'), guid)
+    headers = get_apic_credentials()
 
     try:
-        response = requests.request("DELETE", url)
+        response = requests.request("DELETE", url, headers=headers)
     except Exception as e:
         raise APIException('ERP threw error deleting demo', internal_details=str(e))
 
@@ -117,6 +122,7 @@ def get_demo_retailers(guid):
     # Create and format request to ERP
     url = '%s/api/v1/Demos/%s/retailers' % (get_service_url('lw-erp'), guid)
     headers = {'cache-control': "no-cache"}
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)

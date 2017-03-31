@@ -38,6 +38,15 @@ def get_service_url(service_name):
     else:
         raise APIException('Unrecognized service invocation')
 
+def get_apic_credentials():
+    creds = {}
+    if 'APIC_CLIENT_ID' in env:
+        creds['X-IBM-Client-Id'] = env['APIC_CLIENT_ID']
+        creds['X-IBM-Client-Secret'] = env['APIC_CLIENT_SECRET']
+        return creds
+    else:
+        return {}
+
 def call_openwhisk(action, payload=None):
     """
     Calls and waits for the completion of an OpenWhisk action with the optional payload

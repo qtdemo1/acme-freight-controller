@@ -167,7 +167,7 @@ The API methods that this component exposes requires the discovery of dependent 
 
 The API and data models are defined in [this Swagger 2.0 file](swagger.yaml). You can view this file in the [Swagger Editor](http://editor.swagger.io/#/?import=https://raw.githubusercontent.com/strongloop/acme-freight-controller/master/swagger.yaml).
 
-Use the Postman collection to help you get started with the controller API:  
+Use the Postman collection to help you get started with the controller API:
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b39a8c0ce27371fbd972#?env%5BLW_Prod%5D=W3sia2V5IjoiZXJwX2hvc3QiLCJ2YWx1ZSI6Imh0dHA6Ly9sb2dpc3RpY3Mtd2l6YXJkLWVycC5teWJsdWVtaXgubmV0LyIsInR5cGUiOiJ0ZXh0IiwiZW5hYmxlZCI6dHJ1ZSwiaG92ZXJlZCI6ZmFsc2V9LHsia2V5IjoiY29udHJvbGxlcl9ob3N0IiwidmFsdWUiOiJodHRwczovL2xvZ2lzdGljcy13aXphcmQubXlibHVlbWl4Lm5ldCIsInR5cGUiOiJ0ZXh0IiwiZW5hYmxlZCI6dHJ1ZSwiaG92ZXJlZCI6ZmFsc2V9XQ==)
 
 ## Contribute
@@ -203,7 +203,7 @@ Deployment tracking can be disabled by removing `cf_deployment_tracker.track()` 
 
 ## License
 
-See [License.txt](License.txt) for license information.
+See [LICENSE](LICENSE) for license information.
 
 <!--Links-->
 [erp_github_url]: https://github.com/strongloop/acme-freight-erp

@@ -1,11 +1,11 @@
 #!/bin/bash
 # Set app's env vars
 if [ "$REPO_BRANCH" == "master" ]; then
-  LOGISTICS_WIZARD_ENV="PROD"
+  ACME_FREIGHT_ENV="PROD"
 else
-  LOGISTICS_WIZARD_ENV="DEV"
+  ACME_FREIGHT_ENV="DEV"
 fi
-echo "LOGISTICS_WIZARD_ENV: $LOGISTICS_WIZARD_ENV"
+echo "ACME_FREIGHT_ENV: $ACME_FREIGHT_ENV"
 
 domain=".mybluemix.net"
 case "${REGION_ID}" in
@@ -19,7 +19,7 @@ esac
 # Deploy app
 if ! cf app $CF_APP; then
   cf push $CF_APP -n $CF_APP --no-start
-  cf set-env $CF_APP LOGISTICS_WIZARD_ENV ${LOGISTICS_WIZARD_ENV}
+  cf set-env $CF_APP ACME_FREIGHT_ENV ${ACME_FREIGHT_ENV}
   cf set-env $CF_APP ERP_SERVICE https://$ERP_SERVICE_APP_NAME$domain
   cf set-env $CF_APP OPENWHISK_AUTH "${OPENWHISK_AUTH}"
   cf set-env $CF_APP OPENWHISK_PACKAGE ${RECOMMENDATION_PACKAGE_NAME}
@@ -39,7 +39,7 @@ else
   trap rollback ERR
   cf rename $CF_APP $OLD_CF_APP
   cf push $CF_APP -n $CF_APP --no-start
-  cf set-env $CF_APP LOGISTICS_WIZARD_ENV ${LOGISTICS_WIZARD_ENV}
+  cf set-env $CF_APP ACME_FREIGHT_ENV ${ACME_FREIGHT_ENV}
   cf set-env $CF_APP ERP_SERVICE https://$ERP_SERVICE_APP_NAME$domain
   cf set-env $CF_APP OPENWHISK_AUTH "${OPENWHISK_AUTH}"
   cf set-env $CF_APP OPENWHISK_PACKAGE ${RECOMMENDATION_PACKAGE_NAME}

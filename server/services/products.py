@@ -7,6 +7,7 @@ object and should just call into the service layer to act upon a product resourc
 import requests
 import json
 from server.utils import get_service_url
+from server.utils import get_apic_credentials
 from server.exceptions import (APIException,
                                AuthenticationException)
 
@@ -48,6 +49,7 @@ def get_products(token):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)

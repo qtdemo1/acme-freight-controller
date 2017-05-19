@@ -38,6 +38,15 @@ def get_service_url(service_name):
     else:
         raise APIException('Unrecognized service invocation')
 
+def get_apic_credentials():
+    creds = {}
+    if Config.APIC_CLIENT_ID and Config.APIC_CLIENT_SECRET:
+        creds['X-IBM-Client-Id'] = Config.APIC_CLIENT_ID
+        creds['X-IBM-Client-Secret'] = Config.APIC_CLIENT_SECRET
+        return creds
+    else:
+        return {}
+
 def call_openwhisk(action, payload=None):
     """
     Calls and waits for the completion of an OpenWhisk action with the optional payload
@@ -63,6 +72,13 @@ def call_openwhisk(action, payload=None):
         'content-type': "application/json",
         'cache-control': "no-cache"
     }
+
+    if Config.OPENWHISK_API_URL and Config.OPENWHISK_API_KEY:
+        del headers['Authorization']
+        headers['X-IBM-Client-ID'] = Config.OPENWHISK_API_KEY
+        url = Config.OPENWHISK_API_URL.rstrip('/') + '/' + action
+        response = requests.request("POST", url, data=payload_json, headers=headers)
+        return response
 
     response = requests.request("POST", url, data=payload_json, headers=headers)
     body = json.loads(response.text)

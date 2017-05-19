@@ -7,6 +7,7 @@ object and should just call into the service layer to act upon a retailer resour
 import requests
 import json
 from server.utils import get_service_url
+from server.utils import get_apic_credentials
 from server.exceptions import (ResourceDoesNotExistException)
 from server.exceptions import (APIException,
                                AuthenticationException,
@@ -49,6 +50,7 @@ def get_retailers(token):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)
@@ -79,6 +81,7 @@ def get_retailer(token, retailer_id):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)
@@ -112,6 +115,7 @@ def get_retailer_inventory(token, retailer_id):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)

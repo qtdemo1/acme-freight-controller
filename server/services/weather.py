@@ -38,7 +38,7 @@ def acknowledge_recommendation(demoGuid, recommendationId):
 def trigger_simulation(demoGuid):
     """
     Trigger a simulation in the given demo
-    Creates a Snow Storm in the DC area
+    Creates a Snow Storm
     """
 
     try:

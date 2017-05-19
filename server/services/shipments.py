@@ -7,6 +7,7 @@ object and should just call into the service layer to act upon a shipment resour
 import requests
 import json
 from server.utils import get_service_url
+from server.utils import get_apic_credentials
 from server.exceptions import (APIException,
                                AuthenticationException,
                                UnprocessableEntityException,
@@ -95,6 +96,7 @@ def get_shipments(token, retailer_id=None, dc_id=None, status=None):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)
@@ -131,6 +133,7 @@ def get_shipment(token, shipment_id, include_items=None):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)
@@ -165,6 +168,8 @@ def create_shipment(token, shipment):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
+
     shipment_json = json.dumps(shipment)
 
     try:
@@ -200,6 +205,7 @@ def delete_shipment(token, shipment_id):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("DELETE", url, headers=headers)
@@ -234,6 +240,7 @@ def update_shipment(token, shipment_id, shipment):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("PUT", url, data=shipment, headers=headers)

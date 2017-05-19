@@ -1,18 +1,13 @@
-# Logistics Wizard Controller
+# Acme Freight Controller
 
-| **master** | [![Build Status](https://travis-ci.org/IBM-Bluemix/logistics-wizard-controller.svg?branch=master)](https://travis-ci.org/IBM-Bluemix/logistics-wizard-controller) [![Coverage Status](https://coveralls.io/repos/github/IBM-Bluemix/logistics-wizard-controller/badge.svg?branch=master)](https://coveralls.io/github/IBM-Bluemix/logistics-wizard-controller?branch=master) |
-| ----- | ----- |
-| **dev** | [![Build Status](https://travis-ci.org/IBM-Bluemix/logistics-wizard-controller.svg?branch=dev)](https://travis-ci.org/IBM-Bluemix/logistics-wizard-controller) [![Coverage Status](https://coveralls.io/repos/github/IBM-Bluemix/logistics-wizard-controller/badge.svg?branch=dev)](https://coveralls.io/github/IBM-Bluemix/logistics-wizard-controller?branch=dev)|
-
-This service is part of the larger [Logistics Wizard](https://github.com/IBM-Bluemix/logistics-wizard) project.
+This service is part of the larger [Acme Freight](https://github.com/ibm/acme-freight) project.
 
 ## Overview
 
 This service acts as the main controller for interaction between the system's services.
 
-[![Deploy to Bluemix](https://bluemix.net/deploy/button.png)](https://bluemix.net/deploy?repository=https://github.com/IBM-Bluemix/logistics-wizard-controller.git)
+To automatically deploy this application to Bluemix as part of the larger Acme Freight application, refer to the Bluemix DevOps toolchain on the [parent repository](https://github.com/ibm/acme-freight).
 
-![Bluemix Deployments](https://deployment-tracker.mybluemix.net/stats/d4f7f6455442b0d2e1325dde70ab15ab/badge.svg)
 
 ## Running the app on Bluemix
 
@@ -20,12 +15,12 @@ This service acts as the main controller for interaction between the system's se
 
 1. Download and install the [Cloud Foundry CLI][cloud_foundry_url] tool
 
-1. The app depends on the [ERP](https://github.com/IBM-Bluemix/logistics-wizard-erp) and [Recommendation](https://github.com/IBM-Bluemix/logistics-wizard-recommendation) microservices. Make sure to deploy them first.
+1. The app depends on the [ERP](https://github.com/ibm/acme-freight-erp) and [Recommendation](https://github.com/ibm/acme-freight-recommendation) microservices. These applications are deployed automatically as part of the toolchain on the parent `acme-freight` repository.
 
 1. Clone the app to your local environment from your terminal using the following command:
 
 	```bash
-	git clone https://github.com/IBM-Bluemix/logistics-wizard-controller.git
+	git clone https://github.com/ibm/acme-freight-controller.git
 	```
 
 1. `cd` into this newly created directory
@@ -49,23 +44,23 @@ This service acts as the main controller for interaction between the system's se
 1. Define the environment variable pointing to the ERP service.
 
   ```
-  cf set-env logistics-wizard-controller ERP_SERVICE <url-to-erp-service-here>
+  cf set-env acme-freight-controller ERP_SERVICE <url-to-erp-service-here>
   ```
 
 1. Define the OpenWhisk auth key and the package where the actions of the Recommendation service have been deployed
 
   ```
-  cf set-env logistics-wizard-controller OPENWHISK_AUTH "your-auth-key"
-  cf set-env logistics-wizard-controller OPENWHISK_PACKAGE lwr
+  cf set-env acme-freight-controller OPENWHISK_AUTH "your-auth-key"
+  cf set-env acme-freight-controller OPENWHISK_PACKAGE lwr
   ```
 
 1. Start the app.
 
   ```bash
-  cf start logistics-wizard-controller
+  cf start acme-freight-controller
   ```
 
-And voila! You now have your very own instance of Logistics Wizard running on Bluemix.
+And voila! You now have your very own instance of the Acme Freight controller running on Bluemix.
 
 ## Run the app locally
 
@@ -74,7 +69,7 @@ And voila! You now have your very own instance of Logistics Wizard running on Bl
 2. Clone the app to your local environment from your terminal using the following command:
 
   ```bash
-  git clone https://github.com/IBM-Bluemix/logistics-wizard-controller.git
+  git clone https://github.com/ibm/acme-freight-controller.git
   ```
 
 3. `cd` into this newly created directory
@@ -141,10 +136,10 @@ One popular option for continuous integration is [Travis CI][travis_url]. We hav
 
 1. Go to your [Travis CI Profile][travis_profile_url]
 
-2. Check the box next to your logistics-wizard GitHub repository and then click the settings cog
+2. Check the box next to your acme-freight GitHub repository and then click the settings cog
 
 3. Create the following environment variables
-	- `LOGISTICS_WIZARD_ENV` - TEST
+	- `ACME_FREIGHT_ENV` - TEST
 
 Thats it! Now your future pushes to GitHub will be built and tested by Travis CI.
 
@@ -165,26 +160,23 @@ To determine how to run coveralls using another CI tool or for more in-depth ins
 ## API documentation
 The API methods that this component exposes requires the discovery of dependent services, however, the API will gracefully fail when they are not available.
 
-The API and data models are defined in [this Swagger 2.0 file](swagger.yaml). You can view this file in the [Swagger Editor](http://editor.swagger.io/#/?import=https://raw.githubusercontent.com/IBM-Bluemix/logistics-wizard-controller/master/swagger.yaml).
+The API and data models are defined in [this Swagger 2.0 file](swagger.yaml). You can view this file in the [Swagger Editor](http://editor.swagger.io/#/?import=https://raw.githubusercontent.com/strongloop/acme-freight-controller/master/swagger.yaml).
 
-Use the Postman collection to help you get started with the controller API:  
+Use the Postman collection to help you get started with the controller API:
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/b39a8c0ce27371fbd972#?env%5BLW_Prod%5D=W3sia2V5IjoiZXJwX2hvc3QiLCJ2YWx1ZSI6Imh0dHA6Ly9sb2dpc3RpY3Mtd2l6YXJkLWVycC5teWJsdWVtaXgubmV0LyIsInR5cGUiOiJ0ZXh0IiwiZW5hYmxlZCI6dHJ1ZSwiaG92ZXJlZCI6ZmFsc2V9LHsia2V5IjoiY29udHJvbGxlcl9ob3N0IiwidmFsdWUiOiJodHRwczovL2xvZ2lzdGljcy13aXphcmQubXlibHVlbWl4Lm5ldCIsInR5cGUiOiJ0ZXh0IiwiZW5hYmxlZCI6dHJ1ZSwiaG92ZXJlZCI6ZmFsc2V9XQ==)
-
-## Contribute
-Please check out our [Contributing Guidelines](https://github.com/IBM-Bluemix/logistics-wizard/blob/master/.github/CONTRIBUTING.md) for detailed information on how you can lend a hand to the Logistics Wizard demo implementation effort.
 
 ## Troubleshooting
 
 The primary source of debugging information for your Bluemix app is the logs. To see them, run the following command using the Cloud Foundry CLI:
 
   ```
-  $ cf logs logistics-wizard-controller --recent
+  $ cf logs acme-freight-controller --recent
   ```
 For more detailed information on troubleshooting your application, see the [Troubleshooting section](https://www.ng.bluemix.net/docs/troubleshoot/tr.html) in the Bluemix documentation.
 
 ## Privacy Notice
 
-The logistics-wizard sample web application includes code to track deployments to Bluemix and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/IBM-Bluemix/cf-deployment-tracker-service) service on each deployment:
+The acme-freight sample web application includes code to track deployments to Bluemix and other Cloud Foundry platforms. The following information is sent to a [Deployment Tracker](https://github.com/ibm/cf-deployment-tracker-service) service on each deployment:
 
 * Python package version
 * Python repository URL
@@ -203,12 +195,12 @@ Deployment tracking can be disabled by removing `cf_deployment_tracker.track()` 
 
 ## License
 
-See [License.txt](License.txt) for license information.
+See [LICENSE](LICENSE) for license information.
 
 <!--Links-->
-[erp_github_url]: https://github.com/IBM-Bluemix/logistics-wizard-erp
-[recommendation_github_url]: https://github.com/IBM-Bluemix/logistics-wizard-recommendation
-[toolchain_github_url]: https://github.com/IBM-Bluemix/logistics-wizard-toolchain
+[erp_github_url]: https://github.com/ibm/acme-freight-erp
+[recommendation_github_url]: https://github.com/ibm/acme-freight-recommendation
+[toolchain_github_url]: https://github.com/ibm/acme-freight-toolchain
 [bluemix_signup_url]: http://ibm.biz/logistics-wizard-signup
 [cloud_foundry_url]: https://github.com/cloudfoundry/cli
 [download_python_url]: https://www.python.org/downloads/

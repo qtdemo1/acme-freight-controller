@@ -7,6 +7,7 @@ object and should just call into the service layer to act upon a distribution ce
 import requests
 import json
 from server.utils import get_service_url
+from server.utils import get_apic_credentials
 from server.exceptions import (APIException,
                                AuthenticationException,
                                ResourceDoesNotExistException)
@@ -49,6 +50,7 @@ def get_distribution_centers(token):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)
@@ -79,6 +81,7 @@ def get_distribution_center(token, dc_id):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)
@@ -112,6 +115,7 @@ def get_distribution_center_inventory(token, dc_id):
         'cache-control': "no-cache",
         'Authorization': token
     }
+    headers.update(get_apic_credentials())
 
     try:
         response = requests.request("GET", url, headers=headers)

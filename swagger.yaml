@@ -1,12 +1,12 @@
 swagger: '2.0'
 info:
   version: "1.0.0"
-  title: Logistics Wizard Controller
-  description: The main controller app for the Logistics Wizard system, interfacing with the ERP, Recommendations, and UI services.
+  title: Acme Freight Controller
+  description: The main controller app for the Acme Freight system, interfacing with the ERP, Recommendations, and UI services.
   license:
     name: Apache 2.0
 # the domain of the service
-host: logistics-wizard-controller.mybluemix.net
+host: acme-freight-controller.mybluemix.net
 # array of all schemes that your API supports
 schemes:
   - https

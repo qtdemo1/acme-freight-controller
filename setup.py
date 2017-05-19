@@ -19,11 +19,11 @@ with open(path.join(here, 'README.md'), encoding='utf-8') as f:
     long_description = f.read()
 
 setup(
-    name='logistics-wizard-controller',
+    name='acme-freight-controller',
     version='0.1.0',
-    description='Proxy app for the Logistics Wizard demo system',
+    description='Proxy app for the Acme Freight demo system',
     long_description=long_description,
-    url='https://github.com/IBM-Bluemix/logistics-wizard-controller',
+    url='https://github.com/strongloop/acme-freight-controller',
     author='IBM-Bluemix',
     author_email='ibm@us.ibm.com',
     license='Apache-2.0',

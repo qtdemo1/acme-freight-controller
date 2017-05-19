@@ -7,4 +7,4 @@ landing_blueprint = Blueprint('landing', __name__)
 
 @landing_blueprint.route('/', methods=['GET'])
 def landing():
-    return 'This is the Logistics Wizard Controller API. Did you mean to visit UI instead?'
+    return 'This is the Acme Freight Controller API. Did you mean to visit UI instead?'

@@ -73,6 +73,13 @@ def call_openwhisk(action, payload=None):
         'cache-control': "no-cache"
     }
 
+    if 'OW_API_KEY' in env and 'OW_API_URL' in env:
+        del headers['Authorization']
+        headers['X-IBM-Client-ID'] = env['OW_API_KEY']
+        url = env['OW_API_URL'].rstrip('/') + '/' + action
+        response = requests.request("POST", url, data=payload_json, headers=headers)
+        return response
+
     response = requests.request("POST", url, data=payload_json, headers=headers)
     body = json.loads(response.text)
     result = body.get('response').get('result')

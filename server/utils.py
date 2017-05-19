@@ -40,9 +40,9 @@ def get_service_url(service_name):
 
 def get_apic_credentials():
     creds = {}
-    if 'APIC_CLIENT_ID' in env:
-        creds['X-IBM-Client-Id'] = env['APIC_CLIENT_ID']
-        creds['X-IBM-Client-Secret'] = env['APIC_CLIENT_SECRET']
+    if Config.APIC_CLIENT_ID and Config.APIC_CLIENT_SECRET:
+        creds['X-IBM-Client-Id'] = Config.APIC_CLIENT_ID
+        creds['X-IBM-Client-Secret'] = Config.APIC_CLIENT_SECRET
         return creds
     else:
         return {}
@@ -73,10 +73,10 @@ def call_openwhisk(action, payload=None):
         'cache-control': "no-cache"
     }
 
-    if 'OW_API_KEY' in env and 'OW_API_URL' in env:
+    if Config.OPENWHISK_API_URL and Config.OPENWHISK_API_KEY:
         del headers['Authorization']
-        headers['X-IBM-Client-ID'] = env['OW_API_KEY']
-        url = env['OW_API_URL'].rstrip('/') + '/' + action
+        headers['X-IBM-Client-ID'] = Config.OPENWHISK_API_KEY
+        url = Config.OPENWHISK_API_URL.rstrip('/') + '/' + action
         response = requests.request("POST", url, data=payload_json, headers=headers)
         return response
 

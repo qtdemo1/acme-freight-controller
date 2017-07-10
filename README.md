@@ -1,3 +1,7 @@
+| **master** | [![Build Status](https://travis-ci.org/IBM/acme-freight-controller.svg?branch=master)](https://travis-ci.org/IBM/acme-freight-controller) [![Coverage Status](https://coveralls.io/repos/github/IBM/acme-freight-controller/badge.svg?branch=master)](https://coveralls.io/github/IBM/acme-freight-controller?branch=master) |
+| ----- | ----- |
+| **dev** | [![Build Status](https://travis-ci.org/IBM/acme-freight-controller.svg?branch=dev)](https://travis-ci.org/IBM/acme-freight-controller) [![Coverage Status](https://coveralls.io/repos/github/IBM/acme-freight-controller/badge.svg?branch=dev)](https://coveralls.io/github/IBM/acme-freight-controller?branch=dev)|
+
 # Acme Freight Controller
 
 This service is part of the larger [Acme Freight](https://github.com/ibm/acme-freight) project.
